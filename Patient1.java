@@ -3,26 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package GDSM;
+
 import BDD.Parameter;
 import BDD.ResultSetTableModel;
 import BDD.db_connection;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author liamsi
  */
-public class Patient extends javax.swing.JFrame {
+public class Patient1 extends javax.swing.JFrame {
+
+    /**
+     * Creates new form utilisateur
+     */
     ResultSet rs;
     db_connection db;
-    public Patient() {
+    public Patient1() {
         db = new db_connection(new Parameter().HOST_DB, new Parameter().USERNAME_DB, new Parameter().PASSWORD_DB, new Parameter().IPHOST, new Parameter().PORT);
         initComponents();
         table();
     }
      public void table() {
-        String t[] = {"prenom","nom","telephone","adresse", "age", "groupe_sanguin", "maladies", "medicaments"};
+        String t[] = {"prenom","nom","telephone","adresse", "age"};
         rs = db.querySelect(t, "Patient");
         tbl_prod.setModel(new ResultSetTableModel(rs));
     }
@@ -30,8 +37,9 @@ public class Patient extends javax.swing.JFrame {
         txtid.setText("");
         txtref.setText("");
         txtdes.setText("");
-        txtran.setText("");txtfou.setText("");txtrem.setText("");txtpri.setText("");
-        txtsto.setText("");}
+        txtran.setText("");
+        txtfou.setText("");
+     }
     
 
     /**
@@ -48,23 +56,16 @@ public class Patient extends javax.swing.JFrame {
         tbl_prod = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtdes = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         txtran = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtid = new javax.swing.JTextField();
         txtref = new javax.swing.JTextField();
-        txtrem = new javax.swing.JTextField();
-        txtpri = new javax.swing.JTextField();
-        txtsto = new javax.swing.JTextField();
         txtfou = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -72,7 +73,7 @@ public class Patient extends javax.swing.JFrame {
         comrech = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         txtrech = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        jButton4 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,31 +81,33 @@ public class Patient extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(840, 900));
         jPanel1.setLayout(null);
 
         tbl_prod.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "prenom", "nom", "telephone", "adresse", "age", "groupe sanguin", "maladie", "medicament"
+                "prenom", "nom", "telephone", "adresse", "age"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -119,9 +122,9 @@ public class Patient extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbl_prod);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 60, 840, 210);
+        jScrollPane1.setBounds(0, 60, 850, 260);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 153));
+        jButton2.setBackground(new java.awt.Color(204, 204, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jButton2.setText("ajouter");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -130,9 +133,9 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(340, 330, 120, 40);
+        jButton2.setBounds(30, 340, 120, 40);
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 153));
+        jButton3.setBackground(new java.awt.Color(204, 204, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jButton3.setText("modifier");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -141,76 +144,56 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(460, 330, 110, 40);
+        jButton3.setBounds(150, 340, 110, 40);
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 153));
-        jButton4.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jButton4.setText("supprimer");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4);
-        jButton4.setBounds(570, 330, 130, 40);
-
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(850, 500));
         jPanel2.setLayout(null);
 
         jLabel7.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         jLabel7.setText("Prenom :");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(50, 110, 80, 27);
+        jLabel7.setBounds(40, 100, 80, 27);
 
         jLabel8.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         jLabel8.setText("Age :");
         jPanel2.add(jLabel8);
-        jLabel8.setBounds(310, 110, 40, 20);
-
-        jLabel9.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        jLabel9.setText("Groupe sanguin :");
-        jPanel2.add(jLabel9);
-        jLabel9.setBounds(250, 150, 110, 27);
+        jLabel8.setBounds(300, 100, 40, 20);
 
         jLabel10.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         jLabel10.setText("Nom :");
         jPanel2.add(jLabel10);
-        jLabel10.setBounds(50, 150, 70, 27);
+        jLabel10.setBounds(40, 140, 70, 27);
 
         jLabel11.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         jLabel11.setText("Telephone :");
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(50, 200, 80, 27);
+        jLabel11.setBounds(30, 180, 80, 27);
         jPanel2.add(txtdes);
-        txtdes.setBounds(130, 200, 100, 30);
-
-        jLabel12.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        jLabel12.setText("Maladies :");
-        jPanel2.add(jLabel12);
-        jLabel12.setBounds(280, 200, 70, 27);
-
-        jLabel13.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        jLabel13.setText("Medicament :");
-        jPanel2.add(jLabel13);
-        jLabel13.setBounds(270, 240, 90, 27);
+        txtdes.setBounds(120, 180, 100, 30);
         jPanel2.add(txtran);
-        txtran.setBounds(130, 240, 100, 30);
+        txtran.setBounds(350, 150, 100, 30);
 
         jLabel14.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         jLabel14.setText("Adresse :");
         jPanel2.add(jLabel14);
-        jLabel14.setBounds(50, 240, 70, 27);
+        jLabel14.setBounds(270, 150, 70, 27);
+
+        txtid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtidActionPerformed(evt);
+            }
+        });
         jPanel2.add(txtid);
-        txtid.setBounds(130, 110, 100, 30);
+        txtid.setBounds(120, 100, 100, 30);
+
+        txtref.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtrefActionPerformed(evt);
+            }
+        });
         jPanel2.add(txtref);
-        txtref.setBounds(130, 150, 100, 30);
-        jPanel2.add(txtrem);
-        txtrem.setBounds(370, 150, 100, 30);
-        jPanel2.add(txtpri);
-        txtpri.setBounds(370, 200, 100, 30);
-        jPanel2.add(txtsto);
-        txtsto.setBounds(370, 240, 100, 30);
+        txtref.setBounds(120, 140, 100, 30);
 
         txtfou.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,9 +201,9 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         jPanel2.add(txtfou);
-        txtfou.setBounds(370, 110, 100, 30);
+        txtfou.setBounds(350, 100, 100, 30);
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 153));
+        jButton5.setBackground(new java.awt.Color(204, 204, 255));
         jButton5.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jButton5.setText("actualiser");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -229,17 +212,15 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton5);
-        jButton5.setBounds(360, 60, 130, 40);
-        jButton5.getAccessibleContext().setAccessibleDescription("");
-        jButton5.getAccessibleContext().setAccessibleParent(jPanel2);
+        jButton5.setBounds(260, 20, 130, 40);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(340, 270, 500, 290);
+        jPanel2.setBounds(0, 320, 470, 240);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
         jPanel3.setLayout(null);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 153));
+        jButton1.setBackground(new java.awt.Color(204, 204, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jButton1.setText("recherche ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -251,9 +232,7 @@ public class Patient extends javax.swing.JFrame {
         jButton1.setBounds(10, 140, 140, 40);
 
         comrech.setBackground(new java.awt.Color(255, 255, 255));
-        comrech.setFont(new java.awt.Font("Monaco", 0, 13)); // NOI18N
-        comrech.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "prenom", "nom", "telephone", "adresse", "age", "groupe_sanguin", "maladies", "medicaments" }));
-        comrech.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        comrech.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "prenom", "nom", "telephone", "adresse", "age" }));
         jPanel3.add(comrech);
         comrech.setBounds(40, 70, 240, 40);
 
@@ -264,25 +243,24 @@ public class Patient extends javax.swing.JFrame {
         jPanel3.add(txtrech);
         txtrech.setBounds(150, 140, 180, 40);
 
-        jToggleButton1.setBackground(new java.awt.Color(255, 51, 0));
-        jToggleButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jToggleButton1.setText("RETOURNER");
-        jToggleButton1.setActionCommand("RETOURNER");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setBackground(new java.awt.Color(255, 0, 0));
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton4.setText("Retourner");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
-        jPanel3.add(jToggleButton1);
-        jToggleButton1.setBounds(100, 220, 133, 30);
+        jPanel3.add(jButton4);
+        jButton4.setBounds(150, 210, 130, 30);
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(0, 270, 340, 290);
+        jPanel3.setBounds(470, 290, 370, 270);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("Gestion des Patients ");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(250, 0, 390, 50);
+        jLabel6.setBounds(320, 10, 260, 40);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 840, 560);
@@ -292,13 +270,12 @@ public class Patient extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (txtid.getText().equals("") || txtref.getText().equals("") || txtdes.getText().equals("")
-                || txtfou.getText().equals("")
+                || txtfou.getText().equals("") || txtran.getText().equals("")
                 ) {
             JOptionPane.showMessageDialog(this, "SVP entrer les informations complete");
         } else {
-            String[] colon = {"prenom","nom","telephone","adresse", "age", "groupe_sanguin", "maladies", "medicaments"};
-            String[] inf = {txtid.getText(), txtref.getText(), txtdes.getText(),txtran.getText(),txtfou.getText()
-            ,txtrem.getText(),txtpri.getText(),txtsto.getText()};
+            String[] colon = {"prenom","nom","telephone","adresse", "age"};
+            String[] inf = {txtid.getText(), txtref.getText(), txtdes.getText(),txtran.getText(),txtfou.getText()};
             System.out.println(db.queryInsert("Patient", colon, inf));
             table();
             actualiser();
@@ -307,13 +284,12 @@ public class Patient extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (txtid.getText().equals("") || txtref.getText().equals("") || txtdes.getText().equals("")
-                || txtfou.getText().equals("") || txtran.getText().equals("")
-                ) {
+                || txtfou.getText().equals("") || txtran.getText() == null)
+        {
             JOptionPane.showMessageDialog(this, "SVP entrer les informations complete");
         } else {
-                  String[] colon = {"prenom","nom","telephone","adresse", "age", "groupe_sanguin", "maladies", "medicaments"};
-              String[] inf = {txtid.getText(), txtref.getText(), txtdes.getText(),txtran.getText(),txtfou.getText()
-            ,txtrem.getText(),txtpri.getText(),txtsto.getText()};
+                  String[] colon = {"prenom","nom","telephone","adresse", "age"};
+              String[] inf = {txtid.getText(), txtref.getText(), txtdes.getText(),txtran.getText(),txtfou.getText()};
             String tel = txtdes.getText();
             System.out.println(db.queryUpdate("Patient", colon, inf, "telephone='" + tel + "'"));
             table();
@@ -321,23 +297,12 @@ public class Patient extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    String tel = txtdes.getText();
-        if (JOptionPane.showConfirmDialog(this, "Est ce que tu es sure que tu veux supprimer", "attention!!!", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-            db.queryDelete("Patient", "telephone=" + tel);
-        } else {
-            return;
-        }
-        table();
-
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 actualiser(); table();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         String t = "prenom, nom, telephone, adresse, age, groupe_sanguin, maladies, medicaments";
+        String t = "prenom, nom, telephone, adresse, age";
         if (txtrech.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "SVP entrer quelque chose");
         } else {
@@ -356,15 +321,6 @@ actualiser(); table();        // TODO add your handling code here:
             } else if (comrech.getSelectedItem().equals("age")) {
                 rs = db.querySelect1(t, "Patient", "age LIKE '%" + txtrech.getText() + "%' ");
                 tbl_prod.setModel(new ResultSetTableModel(rs));
-            } else if (comrech.getSelectedItem().equals("groupe_sanguin")) {
-                rs = db.querySelect1(t, "Patient", "groupe_sanguin LIKE '%" + txtrech.getText() + "%' ");
-                tbl_prod.setModel(new ResultSetTableModel(rs));
-            } else if (comrech.getSelectedItem().equals("maladies")) {
-                rs = db.querySelect1(t, "Patient", "maladies LIKE '%" + txtrech.getText() + "%' ");
-                tbl_prod.setModel(new ResultSetTableModel(rs));
-            } else if (comrech.getSelectedItem().equals("medicaments")) {
-                rs = db.querySelect1(t, "Patient", "medicaments LIKE '%" + txtrech.getText() + "%' ");
-                tbl_prod.setModel(new ResultSetTableModel(rs));
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -374,24 +330,28 @@ actualiser(); table();        // TODO add your handling code here:
         txtref.setText(String.valueOf(tbl_prod.getValueAt(tbl_prod.getSelectedRow(), 1)));
         txtdes.setText(String.valueOf(tbl_prod.getValueAt(tbl_prod.getSelectedRow(), 2)));
         txtran.setText(String.valueOf(tbl_prod.getValueAt(tbl_prod.getSelectedRow(), 3)));
-txtfou.setText(String.valueOf(tbl_prod.getValueAt(tbl_prod.getSelectedRow(), 4)));
-txtrem.setText(String.valueOf(tbl_prod.getValueAt(tbl_prod.getSelectedRow(), 5)));
-txtpri.setText(String.valueOf(tbl_prod.getValueAt(tbl_prod.getSelectedRow(), 6)));
-txtsto.setText(String.valueOf(tbl_prod.getValueAt(tbl_prod.getSelectedRow(), 7)));
+        txtfou.setText(String.valueOf(tbl_prod.getValueAt(tbl_prod.getSelectedRow(), 4)));
 
-       
     }//GEN-LAST:event_tbl_prodMouseClicked
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-            // TODO add your handling code here:
-            Principale p = new Principale();
-            p.setVisible(true);
-            this.dispose();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void txtfouActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfouActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfouActionPerformed
+
+    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtidActionPerformed
+
+    private void txtrefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrefActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtrefActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        Principale1 t = new Principale1();
+        t.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -423,7 +383,7 @@ txtsto.setText(String.valueOf(tbl_prod.getValueAt(tbl_prod.getSelectedRow(), 7))
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Patient().setVisible(true);
+                new Patient1().setVisible(true);
             }
         });
     }
@@ -437,28 +397,21 @@ txtsto.setText(String.valueOf(tbl_prod.getValueAt(tbl_prod.getSelectedRow(), 7))
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable tbl_prod;
     private javax.swing.JTextField txtdes;
     private javax.swing.JTextField txtfou;
     private javax.swing.JTextField txtid;
-    private javax.swing.JTextField txtpri;
     private javax.swing.JTextField txtran;
     private javax.swing.JTextField txtrech;
     private javax.swing.JTextField txtref;
-    private javax.swing.JTextField txtrem;
-    private javax.swing.JTextField txtsto;
     // End of variables declaration//GEN-END:variables
 }
